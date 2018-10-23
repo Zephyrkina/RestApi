@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = "ua.training")
 public class AppSpringConfig extends WebMvcConfigurerAdapter {
 
-   /* @Bean
+    @Bean
     public ViewResolver viewResolver()
     {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -35,6 +35,6 @@ public class AppSpringConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
-*/
+
 
 }

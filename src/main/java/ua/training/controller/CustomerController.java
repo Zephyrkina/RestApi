@@ -1,7 +1,6 @@
 package ua.training.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,6 @@ import ua.training.model.entity.Order;
 import ua.training.model.service.CustomerService;
 import ua.training.model.service.OrderService;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
