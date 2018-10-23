@@ -1,5 +1,6 @@
 package ua.training.model.service.impl;
 
+import org.springframework.stereotype.Service;
 import ua.training.model.entity.Customer;
 import ua.training.model.entity.Order;
 import ua.training.model.service.OrderService;
@@ -7,10 +8,12 @@ import ua.training.model.service.OrderService;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class OrderServiceImpl implements OrderService {
     private List<Order> orders;
 
     public OrderServiceImpl() {
+        orders = new ArrayList<>();
         orders.add(new Order(1, "banana", 4, 1));
         orders.add(new Order(2, "apple", 334, 1));
         orders.add(new Order(3, "grape", 34, 1));
@@ -38,7 +41,17 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order getOrderById(int id) {
         for (Order order : orders){
-            if(order.getCustomerId() == id){
+            if(order.getId() == id){
+                return order;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Order getOrderByIds(Customer customer, int idOrder) {
+        for (Order order : orders){
+            if(order.getCustomerId() == customer.getId() && order.getId() == idOrder){
                 return order;
             }
         }

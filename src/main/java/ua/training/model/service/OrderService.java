@@ -9,6 +9,8 @@ public interface OrderService {
     List<Order> getOrders();
     List<Order> getOrdersByCustomer(Customer customer);
     Order getOrderById(int id);
+    Order getOrderByIds(Customer customer, int id);
+
     Order getOrderByName(String name);
     void deleteOrders();
     void deleteOrdersForCustomer(Customer customer);

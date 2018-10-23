@@ -1,13 +1,16 @@
 package ua.training.model.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ua.training.model.entity.Customer;
 import ua.training.model.service.CustomerService;
 import ua.training.model.service.OrderService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
     private List<Customer> customers;
@@ -61,17 +64,18 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomerById(int id) {
-        for (Customer customer : customers) {
-            if(customer.getId() == id){
-                customers.remove(customer);
+        ListIterator<Customer> it = customers.listIterator();
+        while(it.hasNext()) {
+            if(it.next().getId() == id) {
+                it.remove();
             }
         }
     }
 
     @Override
-    public Customer updateCustomer(Customer newCustomer) {
+    public Customer updateCustomer(int id,Customer newCustomer) {
         for (Customer customer : customers) {
-            if(customer.getId() == newCustomer.getId()){
+            if(customer.getId() == id){
                 customer.setId(newCustomer.getId());
                 customer.setName(newCustomer.getName());
                 customer.setOrderList(newCustomer.getOrderList());
@@ -80,6 +84,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return null;
     }
+
 
     @Override
     public void createCustomer(Customer customer) {

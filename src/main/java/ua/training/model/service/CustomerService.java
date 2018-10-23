@@ -10,7 +10,7 @@ public interface CustomerService {
     Customer getCustomerByName(String name);
     void deleteCustomers();
     void deleteCustomerById(int id);
-    Customer updateCustomer(Customer customer);
+    Customer updateCustomer(int id,Customer customer);
     void createCustomer(Customer customer);
 
 }
